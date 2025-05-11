@@ -1,0 +1,7 @@
+### Cadastrar
+POST http://localhost:5169/api/categoria/cadastrar
+Content-Type: application/json
+
+{
+    "Nome":"Animação"
+}

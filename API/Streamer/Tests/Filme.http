@@ -1,0 +1,11 @@
+### Cadatrar
+POST http://localhost:5169/api/filme/cadastrar
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiS2F1YUBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImV4cCI6MTc0NzAwMTkwN30.29yNldSa0cIHyQVlTvHAxL3TCYM_GaHT7z66r8z4MCs
+
+{
+    "Titulo":"Carros",
+    "Descricao": "Filmer de carro falando",
+    "CategoriaId": 1
+    
+}

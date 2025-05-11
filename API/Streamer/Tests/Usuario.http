@@ -1,0 +1,18 @@
+### Cadatrar
+POST http://localhost:5169/api/usuario/cadastrar
+Content-Type: application/json
+
+{
+    "Nome": "Guilherme",
+    "Email":"Kaua@gmail.com",
+    "Senha": "1234"
+}
+### Login
+POST http://localhost:5169/api/usuario/login
+Content-Type: application/json
+
+{
+    "Email":"Kaua@gmail.com",
+    "Senha":"1234"
+}
+
