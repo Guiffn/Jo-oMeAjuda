@@ -1,4 +1,6 @@
-namespace Streamer.Models;
+using Streamer.Models;
+
+namespace Streamer.Dto;
 
 public class LoginResponseDto
 {

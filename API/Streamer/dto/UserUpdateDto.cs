@@ -1,3 +1,5 @@
+namespace Streamer.Dto;
+
 public class UserUpdateDto
 {
     public string? Name { get; set; }

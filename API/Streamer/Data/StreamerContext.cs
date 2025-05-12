@@ -11,6 +11,7 @@ public class StreamerContext : DbContext
 
     public DbSet<User> Users { get; set; }
     public DbSet<Category> Categories { get; set; }
+    public DbSet<Movie> Movies { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -35,5 +36,17 @@ public class StreamerContext : DbContext
         modelBuilder.Entity<Category>()
             .HasIndex(c => c.Name)
             .IsUnique();
+
+        modelBuilder.Entity<Movie>()
+            .HasKey(m => m.Id);
+
+        modelBuilder.Entity<Movie>()
+            .HasIndex(m => m.Title)
+            .IsUnique();
+        
+        modelBuilder.Entity<Movie>()
+            .HasOne(m => m.Category)
+            .WithMany()
+            .HasForeignKey(m => m.CategoryId);        
     }
 } 

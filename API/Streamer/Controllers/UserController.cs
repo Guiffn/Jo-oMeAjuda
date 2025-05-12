@@ -2,9 +2,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
+using Streamer.Dto;
 using Streamer.Models;
 using Streamer.Repositories.Users;
 
@@ -26,8 +25,8 @@ public class UserController : ControllerBase
     [AllowAnonymous]
     public IActionResult Create([FromBody] User user)
     {
-        var userExistente = _usersRepository.GetByEmail(user.Email);
-        if(userExistente != null){
+        var userExists = _usersRepository.GetByEmail(user.Email);
+        if(userExists != null){
             return BadRequest(new{mensagem="Usuário existente tente novamente"});
         }
         _usersRepository.Create(user);
@@ -53,31 +52,31 @@ public class UserController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public IActionResult Update(int id, [FromBody] UserUpdateDto userAtualizado)
+    public IActionResult Update(int id, [FromBody] UserUpdateDto user)
     {
-        var userExistente = _usersRepository.Get(id);
-        if (userExistente == null)
+        var userExists = _usersRepository.Get(id);
+        if (userExists == null)
         {
             return NotFound(new { mensagem = "Usuário não encontrado" });
         }
 
-        if (!string.IsNullOrWhiteSpace(userAtualizado.Name))
+        if (!string.IsNullOrWhiteSpace(user.Name))
         {
-            userExistente.Name = userAtualizado.Name;
+            userExists.Name = user.Name;
         }
 
-        if (!string.IsNullOrWhiteSpace(userAtualizado.Email))
+        if (!string.IsNullOrWhiteSpace(user.Email))
         {
-            userExistente.Email = userAtualizado.Email;
+            userExists.Email = user.Email;
         }
 
-        if (!string.IsNullOrWhiteSpace(userAtualizado.Password))
+        if (!string.IsNullOrWhiteSpace(user.Password))
         {
-            userExistente.Password = userAtualizado.Password;
+            userExists.Password = user.Password;
         }
 
-        _usersRepository.Update(userExistente);
-        return Ok(userExistente);
+        _usersRepository.Update(userExists);
+        return Ok(userExists);
     }
     
     [HttpDelete("{id}")]

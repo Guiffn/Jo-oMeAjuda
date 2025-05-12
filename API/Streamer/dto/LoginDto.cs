@@ -1,4 +1,4 @@
-namespace Streamer.Models;
+namespace Streamer.Dto;
 
 public class LoginDto
 {

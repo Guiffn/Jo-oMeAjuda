@@ -5,6 +5,7 @@ using System.Text;
 using Streamer.Data;
 using Streamer.Repositories.Users;
 using Streamer.Repositories.Categories;
+using Streamer.Repositories.Movies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,7 @@ builder.Services.AddSwaggerGen();
 // Registro dos repositórios
 builder.Services.AddScoped<IUsersRepository, UsersRepository>();
 builder.Services.AddScoped<ICategoriesRepository, CategoriesRepository>();
+builder.Services.AddScoped<IMoviesRepository, MoviesRepository>();
 
 // Configuração do JWT
 var chaveJwt = builder.Configuration["JwtSettings:SecretKey"];
