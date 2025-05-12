@@ -1,8 +1,7 @@
 namespace Streamer.Models;
 
-public enum Permissao
+public enum Permission
 {
-    Usuario,
+    User,
     Admin
-
 }
